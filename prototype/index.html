@@ -1,0 +1,44 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+
+<div id="content">
+
+    <!-- SVG -->        
+    <svg width="220px" height="220px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- LINES -->
+        <line id="line1" x1="10" y1="10" x2="110" y2="110" v-on:click="counter += 1"/>
+        <line id="line2" x1="10" y1="10" x2="210" y2="10" v-on:click="counter += 1"/>
+        <line id="line3" x1="10" y1="10" x2="10" y2="210" v-on:click="counter += 1"/>
+        <line id="line4" x1="210" y1="210" x2="10" y2="210" v-on:click="counter += 1"/>
+        <line id="line5" x1="210" y1="210" x2="210" y2="10" v-on:click="counter += 1"/>
+        <line id="line6" x1="110" y1="110" x2="210" y2="210" v-on:click="counter += 1"/>
+        <line id="line7" x1="110" y1="110" x2="210" y2="10" v-on:click="counter += 1"/>
+        <line id="line8" x1="110" y1="110" x2="10" y2="210" v-on:click="counter += 1"/>
+
+        <!-- POINTS -->
+        <circle cx="10" cy="10" r="3" fill="#afafaf"/>
+        <circle cx="210" cy="210" r="3" fill="#afafaf"/>
+        <circle cx="110" cy="110" r="3" fill="#afafaf"/>
+        <circle cx="210" cy="10" r="3" fill="#afafaf"/>
+        <circle cx="10" cy="210" r="3" fill="#afafaf"/>
+
+    </svg>
+
+</div>   
+           
+</body>
+
+
+<script>
+var example1 = new Vue({
+  el: '#content',
+  data: {
+    counter: 0
+  }
+})        
+</script> 
