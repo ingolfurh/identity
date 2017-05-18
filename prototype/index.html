@@ -11,7 +11,7 @@
     <svg width="220px" height="220px" version="1.1" xmlns="http://www.w3.org/2000/svg">
 		
         <!-- LINES -->
-		<line v-bind:id="'line' + $index" v-for="(line, index) in myLines" v-bind:x1="myLines[index].x1" v-bind:y1="myLines[index].y1" v-bind:x2="myLines[index].x2" v-bind:y2="myLines[index].y2" stroke-width="8" stroke="black"/>
+		<line v-bind:id="'line' + $index" v-for="(line, index) in allLines" v-bind:x1="allLines[index].x1" v-bind:y1="allLines[index].y1" v-bind:x2="allLines[index].x2" v-bind:y2="allLines[index].y2" stroke-width="8" stroke="black" v-on:click="chooseLine"/>
 
 
         <!-- POINTS -->
