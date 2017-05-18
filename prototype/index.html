@@ -9,16 +9,10 @@
 
     <!-- SVG -->        
     <svg width="220px" height="220px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-
+		
         <!-- LINES -->
-        <line id="line1" x1="10" y1="10" x2="110" y2="110" v-on:click="counter += 1"/>
-        <line id="line2" x1="10" y1="10" x2="210" y2="10" v-on:click="counter += 1"/>
-        <line id="line3" x1="10" y1="10" x2="10" y2="210" v-on:click="counter += 1"/>
-        <line id="line4" x1="210" y1="210" x2="10" y2="210" v-on:click="counter += 1"/>
-        <line id="line5" x1="210" y1="210" x2="210" y2="10" v-on:click="counter += 1"/>
-        <line id="line6" x1="110" y1="110" x2="210" y2="210" v-on:click="counter += 1"/>
-        <line id="line7" x1="110" y1="110" x2="210" y2="10" v-on:click="counter += 1"/>
-        <line id="line8" x1="110" y1="110" x2="10" y2="210" v-on:click="counter += 1"/>
+		<line v-bind:id="'line' + $index" v-for="(line, index) in myLines" v-bind:x1="myLines[index].x1" v-bind:y1="myLines[index].y1" v-bind:x2="myLines[index].x2" v-bind:y2="myLines[index].y2" stroke-width="8" stroke="black"/>
+
 
         <!-- POINTS -->
         <circle cx="10" cy="10" r="3" fill="#afafaf"/>
@@ -38,7 +32,68 @@
 var example1 = new Vue({
   el: '#content',
   data: {
-    counter: 0
+    counter: 0,
+	myLines: [
+		{
+			x1: 10,
+			y1: 10,
+			x2: 110,
+			y2: 110,
+		},
+		{
+			x1: 10,
+			y1: 10,
+			x2: 210,
+			y2: 10,
+		},
+		{
+			x1: 10,
+			y1: 10,
+			x2: 10,
+			y2: 210,
+		},
+		{
+			x1: 210,
+			y1: 210,
+			x2: 10,
+			y2: 210,
+		},
+		{
+			x1: 210,
+			y1: 210,
+			x2: 210,
+			y2: 10,
+		},
+		{
+			x1: 110,
+			y1: 110,
+			x2: 210,
+			y2: 210,
+		},
+		{
+			x1: 110,
+			y1: 110,
+			x2: 210,
+			y2: 10,
+		},
+		{
+			x1: 110,
+			y1: 110,
+			x2: 10,
+			y2: 210,
+		},
+	],
+	last: {
+		x1: -1,
+		y1: -1,
+		x2: -1,
+		y2: -1,
+	},
+  },
+  methods: {
+	chooseLine: function() {
+		
+	}
   }
 })        
 </script> 
