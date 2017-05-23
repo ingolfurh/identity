@@ -67,12 +67,16 @@ var example1 = new Vue({
 		x2 = event.target.getAttributeNode("x2").nodeValue;
 		y2 = event.target.getAttributeNode("y2").nodeValue;
 		
+		if(this.hasAlreadyBeenClicked(x1, y1, x2, y2)) {
+			return;
+		}
 		if(this.last.X == -1) {
 			// If this is the first line clicked
 			this.last.X = x1;
 			this.last.Y = y1;
 			this.last.spareX = x2;
 			this.last.spareY = y2;
+			this.addToMyLines(x1, y1, x2, y2);
 		}
 		else if(this.last.spareX != -1) {
 			// If this is the second line clicked
@@ -82,6 +86,7 @@ var example1 = new Vue({
 				
 				this.last.X = x2;
 				this.last.Y = y2;
+				this.addToMyLines(x1, y1, x2, y2);
 			}
 			else if ((this.last.X == x2 && this.last.Y == y2) || (this.last.spareX == x2 && this.last.spareY == y2)) {
 				this.last.spareX = -1;
@@ -89,23 +94,39 @@ var example1 = new Vue({
 				
 				this.last.X = x1;
 				this.last.Y = y1;
+				this.addToMyLines(x1, y1, x2, y2);
 			}
 		}
 		else {
 			// This is a normal line click
-			alert("Hello")
-			
-			//TODO: Make sure you cant click the same line twice.
-			
+
 			if(this.last.X == x1 && this.last.Y == y1) {
 				this.last.X = x2;
 				this.last.Y = y2;
+				this.addToMyLines(x1, y1, x2, y2);
 			}
 			else if(this.last.X == x2 && this.last.Y == y2) {
 				this.last.X = x1;
 				this.last.Y = y1;
+				this.addToMyLines(x1, y1, x2, y2);
 			}
 		}
+	},
+	hasAlreadyBeenClicked: function(x1, y1, x2, y2){
+		for(iter = 0; iter < this.myLines.length; iter++) {
+			if(x1 == this.myLines[iter].x1 && y1 == this.myLines[iter].y1 && x2 == this.myLines[iter].x2 && y2 == this.myLines[iter].y2) {
+				return true;
+			}
+			else if(x2 == this.myLines[iter].x1 && y2 == this.myLines[iter].y1 && x1 == this.myLines[iter].x2 && y1 == this.myLines[iter].y2) {
+				return true;
+			}
+		}
+		return false;
+	},
+	addToMyLines: function(firstX, firstY, secondX, secondY) {
+		var line = {x1: firstX, y1: firstY, x2: secondX, y2: secondY};
+		this.myLines.push(line);
+		
 	}
   }
 })       
