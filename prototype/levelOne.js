@@ -76,7 +76,7 @@ var example1 = new Vue({
 			this.last.Y = y1;
 			this.last.spareX = x2;
 			this.last.spareY = y2;
-			this.addToMyLines(x1, y1, x2, y2);
+			this.addToMyLines(x1, y1, x2, y2, event);
 		}
 		else if(this.last.spareX != -1) {
 			// If this is the second line clicked
@@ -86,7 +86,7 @@ var example1 = new Vue({
 				
 				this.last.X = x2;
 				this.last.Y = y2;
-				this.addToMyLines(x1, y1, x2, y2);
+				this.addToMyLines(x1, y1, x2, y2, event);
 			}
 			else if ((this.last.X == x2 && this.last.Y == y2) || (this.last.spareX == x2 && this.last.spareY == y2)) {
 				this.last.spareX = -1;
@@ -94,7 +94,7 @@ var example1 = new Vue({
 				
 				this.last.X = x1;
 				this.last.Y = y1;
-				this.addToMyLines(x1, y1, x2, y2);
+				this.addToMyLines(x1, y1, x2, y2, event);
 			}
 		}
 		else {
@@ -103,12 +103,12 @@ var example1 = new Vue({
 			if(this.last.X == x1 && this.last.Y == y1) {
 				this.last.X = x2;
 				this.last.Y = y2;
-				this.addToMyLines(x1, y1, x2, y2);
+				this.addToMyLines(x1, y1, x2, y2, event);
 			}
 			else if(this.last.X == x2 && this.last.Y == y2) {
 				this.last.X = x1;
 				this.last.Y = y1;
-				this.addToMyLines(x1, y1, x2, y2);
+				this.addToMyLines(x1, y1, x2, y2, event);
 			}
 		}
 	},
@@ -123,10 +123,12 @@ var example1 = new Vue({
 		}
 		return false;
 	},
-	addToMyLines: function(firstX, firstY, secondX, secondY) {
+	addToMyLines: function(firstX, firstY, secondX, secondY, event) {
 		var line = {x1: firstX, y1: firstY, x2: secondX, y2: secondY};
 		this.myLines.push(line);
 		
+		pathClass = event.target.getAttribute("class");
+		event.target.setAttribute("class", "selected");
 	}
   }
 })       
