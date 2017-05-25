@@ -10,7 +10,7 @@ body{
     border: 1px solid #454545;
 }
 
-/* LINES */
+/* LINES (LATER WILL BE REMOVED, WE WILL USE ONLY PATHS) */
 
 line{
     stroke: #454545;
@@ -39,5 +39,37 @@ line.selected{
 
 /* player already finished shape and played this line as part of it */
 line.disabled{
+    stroke: #242424;
+}
+
+/* PATHS */
+
+path{
+    stroke: #454545;
+    stroke-width: 4px;
+}
+
+/* normal (player can't play this line) */
+path.normal{
+    stroke: #454545;
+}
+
+/* hover */
+path:hover{
+    stroke: #f4b62f;
+}
+
+/* player can play this line */
+path.available{
+    stroke: #745b25;
+}
+
+/* player played this line */
+path.selected{
+    stroke: #f4b62f;
+}
+
+/* player already finished shape and played this line as part of it */
+path.disabled{
     stroke: #242424;
 }
